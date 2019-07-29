@@ -340,6 +340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefabs:
   - {fileID: 4816705013175679187, guid: cbaaddceb4ab1f4498d7231e1cb99f66, type: 3}
+  - {fileID: 8510842809555924002, guid: 5daa3c38c0d694c4fb1cd63ed695c19f, type: 3}
+  - {fileID: 7990752204063158475, guid: fd872377ab1374d408fadb24e801232b, type: 3}
 --- !u!4 &1264642663
 Transform:
   m_ObjectHideFlags: 0
@@ -479,72 +481,5 @@ MonoBehaviour:
   playerTransform: {fileID: 1269147035}
   forwardSpeed: 100
   sidewaysForce: 25
---- !u!1001 &1641231207
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4816705013175679187, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_Name
-      value: Tile_GroundFirst
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816705013175679186, guid: cbaaddceb4ab1f4498d7231e1cb99f66,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cbaaddceb4ab1f4498d7231e1cb99f66, type: 3}
+  jumpForce: 30
+  extendedGravity: 500

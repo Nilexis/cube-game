@@ -63,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+        if(collision.collider.tag == "Ground")
+            isGrounded = true;
     }
 
     void Jump()
