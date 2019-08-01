@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerPos;
     private bool isMidJump;
     private bool isGrounded;
+    private bool isDead;
 
     // Start is called before the first frame update
     void Start()
     {
         playerPos = new Vector3(0f, 0f, 0f);
         isMidJump = false;
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -32,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isDead)
+        { 
+            return;
+        }
+
         sidewaysMove = Input.GetAxisRaw("Horizontal");
         //moving the character
         //rb.AddForce(0, 0, forwardSpeed * Time.deltaTime);
@@ -60,11 +67,25 @@ public class PlayerMovement : MonoBehaviour
         //rb.AddForce(sidewaysForce * sidewaysMove * Time.deltaTime, 0, 0);
         //playerTransform.Translate(sidewaysForce * sidewaysMove * Time.deltaTime, 0f, 0f);
     }
-
+    
+    
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Ground")
+        if (collision.collider.tag == "Ground")
+        {
             isGrounded = true;
+        }
+        else if (collision.collider.tag == "Obstacle" && !isDead)
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        isDead = true;
+        GetComponent<Score>().OnDeath();
+        rb.velocity = 0.25f*rb.velocity;
     }
 
     void Jump()
