@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float extendedGravity = 1000f;
     private float sidewaysMove;
     private float maxWidth = 40f;
-    private float maxHeight = 2f;
+    private float maxHeight = 3f;
     private Vector3 playerPos;
     private bool isMidJump;
     private bool isGrounded;
@@ -44,7 +44,9 @@ public class PlayerMovement : MonoBehaviour
         //rb.AddForce(0, 0, forwardSpeed * Time.deltaTime);
         rb.AddForce(0, -extendedGravity * Mathf.Pow(playerTransform.position.y, 0.5f) * Time.deltaTime, 0);
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, forwardSpeed);
-        playerPos.x += sidewaysForce * sidewaysMove * Time.deltaTime;
+        //to make the x be only player-controlled, use this line instead of the next one:
+        //playerPos.x += sidewaysForce * sidewaysMove * Time.deltaTime;
+        playerPos.x = playerTransform.position.x + sidewaysForce * sidewaysMove * Time.deltaTime;
         playerPos.y = playerTransform.position.y;
         playerPos.z = playerTransform.position.z;
         if (playerPos.x > maxWidth / 2)
@@ -62,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             isMidJump = false;
-            maxHeight = 2f;
+            maxHeight = 3f;
         }
         //rb.AddForce(sidewaysForce * sidewaysMove * Time.deltaTime, 0, 0);
         //playerTransform.Translate(sidewaysForce * sidewaysMove * Time.deltaTime, 0f, 0f);
