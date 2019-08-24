@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 15f;
     public float extendedGravity = 1000f;
     private float sidewaysMove;
-    private float maxWidth = 40f;
+    private float maxWidth = 450f;
     private float maxHeight = 3f;
     private Vector3 playerPos;
     private bool isMidJump;
@@ -41,8 +41,10 @@ public class PlayerMovement : MonoBehaviour
 
         sidewaysMove = Input.GetAxisRaw("Horizontal");
         //moving the character
-        //rb.AddForce(0, 0, forwardSpeed * Time.deltaTime);
-        rb.AddForce(0, -extendedGravity * Mathf.Pow(playerTransform.position.y, 0.5f) * Time.deltaTime, 0);
+        rb.AddForce(0, 0, forwardSpeed * Time.deltaTime);
+        //if(playerTransform.position.y > 5)
+        //    rb.AddForce(0, -extendedGravity * Mathf.Pow(Mathf.Abs(playerTransform.position.y), 0.5f) * Time.deltaTime, 0);
+        rb.AddForce(0, -extendedGravity * Time.deltaTime, 0);
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, forwardSpeed);
         //to make the x be only player-controlled, use this line instead of the next one:
         //playerPos.x += sidewaysForce * sidewaysMove * Time.deltaTime;
@@ -53,10 +55,10 @@ public class PlayerMovement : MonoBehaviour
             playerPos.x = maxWidth / 2;
         if (playerPos.x < -maxWidth / 2)
             playerPos.x = -maxWidth / 2;
-        if (playerPos.y > maxHeight)
-            playerPos.y = maxHeight;//rb.AddForce(0, -2000*Time.deltaTime, 0);
-        if (playerPos.y < 0)
-            playerPos.y = 0;
+        //if (playerPos.y > maxHeight)
+        //    playerPos.y = maxHeight;//rb.AddForce(0, -2000*Time.deltaTime, 0);
+        //if (playerPos.y < 0)
+        //    playerPos.y = 0;
         playerTransform.position = playerPos;
         //jump mechanics
         if (!isMidJump && Input.GetAxisRaw("Vertical") > 0)

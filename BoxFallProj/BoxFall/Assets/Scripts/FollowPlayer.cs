@@ -17,9 +17,6 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        camPos = player.transform.position;
-        camPos.Set(0, 0, camPos.z);
-        camPos += camOffset;
-        transform.position = camPos + camOffset;
+        transform.position = player.transform.position + camOffset;
     }
 }
