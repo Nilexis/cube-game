@@ -6,15 +6,20 @@ public class TileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
     public GameObject[] treePrefabs;
+    public GameObject[] bushPrefabs;
     private Transform playerTransform;
     private float tileLen = 150.0f;
     private float spawnZ = -150.0f;
-    private int tileAmountFront = 8;
+    private int tileAmountFront = 4;
     private int lastPrefabIdx = 0;
-    private int tileWidth = 5;
-    private int treesInTileRow = 5;
+    private int tileWidth = 3;
+    private int treesInTileRow = 8;
+    private int bushesInTileRow = 5;
+    private List<int> tileTags;
     private List<GameObject> activeTiles;
     private List<GameObject> activeTrees;
+    private List<GameObject> activeBushes;
+
 
 
     // Start is called before the first frame update
@@ -23,6 +28,8 @@ public class TileManager : MonoBehaviour
         spawnZ = -1 * tileLen;
         activeTiles = new List<GameObject>();
         activeTrees = new List<GameObject>();
+        activeBushes = new List<GameObject>();
+        tileTags = new List<int>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         for (int i = 0; i < tileAmountFront; i++)
         {
@@ -49,7 +56,9 @@ public class TileManager : MonoBehaviour
     private void SpawnTile(int prefabNumber = -1)
     {
         GameObject tile;
-        GameObject tree;
+        GameObject natObj;
+
+        tileTags.Add(prefabNumber);
 
         for (int i = 0; i < tileWidth; i++)
         {
@@ -61,17 +70,32 @@ public class TileManager : MonoBehaviour
             {
                 //spawn trees
                 float x, y, z;
+                //TODO: CHANGE TO WHILE LOOP SO IT COULD LOOP OVER FLOATS 
                 for (int x2 = -(((int)tileWidth - 1) * (int)tileLen) / 2 + i * (int)tileLen - (int)tileLen / 2; x2 < -((tileWidth - 1) * tileLen) / 2 + i * tileLen + (int)tileLen / 2; x2 += (int)tileLen / treesInTileRow)
                 {
                     for (int z2 = (int)spawnZ; z2 < spawnZ + (int)tileLen; z2 += (int)tileLen / treesInTileRow)
                     {
                         x = x2 + Random.Range(0, tileLen / treesInTileRow);
                         z = z2 + Random.Range(0, tileLen / treesInTileRow);
-                        tree = Instantiate(treePrefabs[GetRndIdxTrees()]) as GameObject;
-                        y = Mathf.PerlinNoise(x * .06f, z * .1f) * 4.0f - z * 1.5f + Mathf.PerlinNoise(x * .002f, z * .01f) * (-10);
-                        tree.transform.SetParent(transform);
-                        tree.transform.position = new Vector3(x, y, z);
-                        activeTrees.Add(tree);
+                        natObj = Instantiate(treePrefabs[GetRndIdxTrees()]) as GameObject;
+                        y = MeshGenerator.GetYPerlin((float)x, (float)z);
+                        natObj.transform.SetParent(transform);
+                        natObj.transform.position = new Vector3(x, y, z);
+                        activeTrees.Add(natObj);
+                    }
+                }
+                //spawn bushes
+                for (int x2 = -(((int)tileWidth - 1) * (int)tileLen) / 2 + i * (int)tileLen - (int)tileLen / 2; x2 < -((tileWidth - 1) * tileLen) / 2 + i * tileLen + (int)tileLen / 2; x2 += (int)(tileLen / (float) bushesInTileRow))
+                {
+                    for (int z2 = (int)spawnZ; z2 < spawnZ + (int)tileLen; z2 += (int) (tileLen / (float) bushesInTileRow))
+                    {
+                        x = x2 + Random.Range(0, tileLen / (float) bushesInTileRow);
+                        z = z2 + Random.Range(0, tileLen / (float) bushesInTileRow);
+                        natObj = Instantiate(bushPrefabs[GetRndIdxTrees()]) as GameObject;
+                        y = MeshGenerator.GetYPerlin((float)x, (float)z);
+                        natObj.transform.SetParent(transform);
+                        natObj.transform.position = new Vector3(x, y, z);
+                        activeBushes.Add(natObj);
                     }
                 }
             }
@@ -82,16 +106,27 @@ public class TileManager : MonoBehaviour
 
     private void DeleteTile()
     {
-        for(int i = 0; i < treesInTileRow * treesInTileRow; i++)
+        if (tileTags[0] != 0)
         {
-            Destroy(activeTrees[0]);
-            activeTrees.RemoveAt(0);
+            //delete env
+            for (int i = 0; i < treesInTileRow * treesInTileRow * tileWidth; i++)
+            {
+                Destroy(activeTrees[0]);
+                activeTrees.RemoveAt(0);
+            }
+            for (int i = 0; i < bushesInTileRow * bushesInTileRow * tileWidth; i++)
+            {
+                Destroy(activeBushes[0]);
+                activeBushes.RemoveAt(0);
+            }
         }
+        //delete meshes
         for (int i = 0; i < tileWidth; i++)
         {
             Destroy(activeTiles[0]);
             activeTiles.RemoveAt(0);
         }
+        tileTags.RemoveAt(0);
     }
 
     private int GetRndIdxTrees()

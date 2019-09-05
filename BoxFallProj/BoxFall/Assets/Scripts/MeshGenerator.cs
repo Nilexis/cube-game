@@ -56,7 +56,7 @@ public class MeshGenerator : MonoBehaviour
         {
             for (int x = -xSize / 2; x <= xSize / 2; x++)
             {
-                float y = Mathf.PerlinNoise((xCoord + x) * .06f, (zCoord + z) * .1f) * 4.0f - (float)(zCoord+z) * 1.5f + Mathf.PerlinNoise((xCoord + x) * .002f, (zCoord + z) * .01f) * (-10);
+                float y = GetYPerlin(xCoord + x, zCoord + z);
                 //Debug.Log(x + " " + y + " " + z + "\n");
                 vertices[i] = new Vector3(x, y, z);
                 i++;
@@ -95,6 +95,11 @@ public class MeshGenerator : MonoBehaviour
                 i++;
             }
         }
+    }
+
+    public static float GetYPerlin(float x, float z)
+    {
+        return Mathf.PerlinNoise(x * .06f, z * .1f) * 4.0f - (float)z * 1.0f + Mathf.PerlinNoise(x * .002f, z * .01f) * (-10);
     }
 
     void UpdateMesh()
