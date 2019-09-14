@@ -13,8 +13,8 @@ public class MeshGenerator : MonoBehaviour
     Vector2[] uvs;
 
     public Transform MeshTransform;
-    public int xSize = 150;
-    public int zSize = 150;
+    public int xSize = 50;
+    public int zSize = 50;
     public float WHAPERLIN = 2f;
     public float WHAPERLIN2 = .7f;
     private float textureSize = 5f;

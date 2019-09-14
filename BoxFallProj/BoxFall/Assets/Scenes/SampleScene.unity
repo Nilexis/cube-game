@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 39cace2863926444a9a78daa8ae26413, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 589a12edb895ea9439dfa5861dd024f7, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.80779225, g: 0.70736146, b: 0.61933947, a: 1}
+  m_IndirectSpecularColor: {r: 0.10343189, g: 0.14341334, b: 0.18376756, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -724,13 +724,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.10938167, y: 0.8754261, z: -0.23456976, w: -0.40821788}
   m_LocalPosition: {x: 0, y: 6.87, z: -5.26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 230, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +744,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1269147035}
-  camOffset: {x: 0, y: 10, z: 2}
+  camOffset: {x: 8.5, y: 3, z: 7}
+  dis: 8
 --- !u!1 &1264642661
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,19 +776,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 3151414184276010287, guid: 4912230834a50694b9799b05b93ba76e, type: 3}
-  treePrefabs:
-  - {fileID: 136824, guid: 393b236c42954a640b513d46de90ac38, type: 3}
-  - {fileID: 123896, guid: c63ea781a273235439e583799176c846, type: 3}
-  - {fileID: 191138, guid: 4e2dd32c733005a44b50004d673dc653, type: 3}
-  - {fileID: 109402, guid: aae542b8a65f39b49b008fa689ce9804, type: 3}
-  bushPrefabs:
-  - {fileID: 108544, guid: d638ef2ca2fe20c4c9c08e125692d3f4, type: 3}
-  - {fileID: 199470, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 3}
-  - {fileID: 193742, guid: 9c74caa742791864f9c678287121e6c9, type: 3}
-  - {fileID: 162742, guid: d15b44addf30da74f946086ec0aa993c, type: 3}
-  - {fileID: 128002, guid: bb660abd3b29d9f44866fd79795dbca4, type: 3}
-  - {fileID: 171474, guid: f62058cb710fd1745a24102fff0edd46, type: 3}
+  - {fileID: 3817778760684431638, guid: 602360f54c2deac4a9ad29f360c718e1, type: 3}
+  obstPrefabs:
+  - {fileID: 2140315912635382913, guid: a3bb56d4da785e544bc149d8729c0481, type: 3}
+  - {fileID: 660004894057904298, guid: 991cad4a1ec1bea42bc30034395d3901, type: 3}
+  - {fileID: 5605618394435834272, guid: eeb70620fd36147439c2662a2f0cce03, type: 3}
+  - {fileID: 1824442552463448644, guid: 5153deac037853a49ae5e2312abf2b8f, type: 3}
+  - {fileID: 1830170107702962113, guid: b31e69b3eaf28cc4182d625490af8af1, type: 3}
+  - {fileID: 1182182749864783748, guid: 168d745d43f59f74fab92b73db7e4e0a, type: 3}
 --- !u!4 &1264642663
 Transform:
   m_ObjectHideFlags: 0
@@ -870,7 +866,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aa9fcb8764ab3324aa575a948d139c3a, type: 2}
+  - {fileID: 2100000, guid: fba8b19ce7c9e95458743c85b2063b33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -906,8 +902,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269147030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -926,10 +922,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1269147031}
   playerTransform: {fileID: 1269147035}
-  forwardSpeed: 30
-  sidewaysForce: 25
-  jumpForce: 5
-  extendedGravity: 200
+  forwardSpeed: 60
+  sidewaysForce: 50
+  jumpForce: 50
+  extendedGravity: 500
 --- !u!114 &1269147037
 MonoBehaviour:
   m_ObjectHideFlags: 0

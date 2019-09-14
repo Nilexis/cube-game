@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 15f;
     public float extendedGravity = 1000f;
     private float sidewaysMove;
-    private float maxWidth = 450f;
+    private float maxWidth = 80f;
     private float maxHeight = 3f;
     private Vector3 playerPos;
     private bool isMidJump;
